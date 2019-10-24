@@ -1,2 +1,2 @@
 # predicting-poverty-replication
-A fully python3 and PyTorch replication of Jean et. al. (2016). Paper Github: https://github.com/nealjean/predicting-poverty
+The purpose of this repository is to replicate the Jean et. al. (2016) paper using only Python3 and PyTorch. These more up-to-date tools and instructions should help anyone trying to build off this work.

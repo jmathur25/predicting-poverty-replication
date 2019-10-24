@@ -1,0 +1,6 @@
+pytorch
+torchvision
+networx
+matplotlib
+pillow
+
