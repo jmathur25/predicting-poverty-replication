@@ -1,3 +1,14 @@
+# mine
+*.csv
+*.npy
+*.txt
+*.png
+famine_data/train
+famine_data/valid
+famine_data/ims
+setup_existing_model/predicting_poverty_trained.caffemodel
+famine_data/ims_malawi_2016
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
