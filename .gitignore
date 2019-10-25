@@ -3,11 +3,15 @@
 *.npy
 *.txt
 *.png
-famine_data/train
-famine_data/valid
-famine_data/ims
+process_data/train
+process_data/valid
+process_data/ims
 setup_existing_model/predicting_poverty_trained.caffemodel
-famine_data/ims_malawi_2016
+process_data/ims_malawi_2016
+process_data/data/input/Nightlights
+process_data/data/api_key.txt
+process_data/data/input/LSMS/malawi-2016
+process_data/data/output/LSMS/malawi-2016
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
