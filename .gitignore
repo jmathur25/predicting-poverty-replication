@@ -3,6 +3,7 @@
 *.npy
 *.txt
 *.png
+.DS_Store
 process_data/train
 process_data/valid
 process_data/ims

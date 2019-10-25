@@ -22,7 +22,7 @@ python -m ipykernel install --user --name=<ENV_NAME>
 There are several steps here, make sure to follow all of them.
 
 1. Download the nightlights data by running the Jupyter file in `process_data/scripts_python/download_nightlights_data.ipynb`
-2. Download the 2016-2017 Malawi survey data from https://microdata.worldbank.org/index.php/catalog. The World Bank wants to know how people use their data, so you will have to sign in and explain why you want their data. Query 'LSMS' and filter the years to help find the search. The title of the data when I downloaded it was `Fourth Integrated Household Survey 2016-2017`. If you look at the data description tab, you should see a huge list of files starting with ``HH_Metadata`. Navigate to `Get Microdata` to download the data. Make sure to download the Stata version.
+2. Download the 2016-2017 Malawi survey data from https://microdata.worldbank.org/index.php/catalog. The World Bank wants to know how people use their data, so you will have to sign in and explain why you want their data. Query 'LSMS' and filter the years to help find the search. The title of the data when I downloaded it was `Fourth Integrated Household Survey 2016-2017`. If you look at the data description tab, you should see a huge list of files starting with `HH_Metadata`. Navigate to `Get Microdata` to download the data. Make sure to download the Stata version.
 3. Unzip the downloaded Malawi data into `process_data/data/input/LSMS`, and rename the folder to `malawi-2016`.
 4. Run the scripts in `process_data/scripts` in the following order: <br>
     a. `download_nightlights_data.ipynb` <br>
