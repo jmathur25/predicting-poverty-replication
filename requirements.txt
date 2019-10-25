@@ -1,6 +1,8 @@
-pytorch
-torchvision
-networx
-matplotlib
+numpy
+pandas
+gdal
+requests
+sklearn
+scikit-image
+geoio
 pillow
-
