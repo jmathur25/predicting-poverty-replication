@@ -6,3 +6,5 @@ sklearn
 scikit-image
 geoio
 pillow
+matplotlib
+google
