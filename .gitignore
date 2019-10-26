@@ -2,12 +2,14 @@
 *.csv
 *.npy
 *.txt
-*.png
-.DS_Store
+*.pt
+*.pth
+*.caffemodel
+*.DS_Store
 process_data/train
 process_data/valid
 process_data/ims
-setup_existing_model/predicting_poverty_trained.caffemodel
+process_data/data/ims_malawi_2016/
 process_data/ims_malawi_2016
 process_data/data/input/Nightlights
 process_data/data/api_key.txt
