@@ -9,8 +9,10 @@ The purpose of the paper was to use abundant sources of data (namely satellite i
 Note: all scripts are put in Jupyter Notebook (.ipynb) files to encourage exploration and modification of the work.
 
 # Reproduction Results
-![Result plot](figures/plots.png)
-![Result stats](figures/stats.png)
+<p align="inline" style='text-align:center'>
+  <img src="figures/plots.png" width="325" alt="Result plots">
+  <img src="figures/stats.png" height="200" alt="Result stats">
+</p>
 
 # Setup
 I recommend creating a virtual environment for this project. I prefer using Anaconda.
