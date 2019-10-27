@@ -47,13 +47,20 @@ There are several steps here, make sure to follow all of them.
     - `evaluate_download_progress.ipynb` can be used to see how many images have been downloaded. Note that if you are working on a VM like Google's Deep Learning VM, connections can close after extended periods of time. This doesn't stop the script itself from running, but there's no way to see the printed output anymore if you reopen the Jupyter file. This new file I made will simply read the number of images that are download. If the number keeps increasing, you know the script is still running. <br>
     - `im_download_demo.ipynb` demonstrates the API call in a standalone file.
 
-# Use existing model
+# Use paper's model
 This uses the original paper's weights on the images you downloaded.
+
+I don't recommend doing this because you will need to setup Google's protocol buffers. This link may help:
+https://github.com/protocolbuffers/protobuf/tree/master/python
 
 1. Download weights from https://www.dropbox.com/s/4cmfgay9gm2fyj6/predicting_poverty_trained.caffemodel?dl=0 into `setup_existing_model`
 2. Run `setup_existing_model/forward_pass.ipynb`
 3. Run `setup_existing_model/merge_nps.ipynb`
 4. Run `use_existing_model.ipynb`
+
+
+# Use my model
+Download the model from https://drive.google.com/drive/folders/1gZZ1NoKaq43znWIBjzmrLuMQh4uzu9qn?usp=sharing and put it into the root directory. It should be named `trained_model.pt`. Then run `use_trained_model.ipynb`.
 
 
 # Make model from scratch
