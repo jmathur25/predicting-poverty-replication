@@ -19,7 +19,7 @@ conda activate <ENV_NAME>
 conda install pytorch torchvision -c pytorch
 pip install -r requirements.txt
 ```
-If a requirement fails to install, try using conda to install it instead. The libraries that are most likely to fail are gdal and geoio. There are several Stack Overflow posts on these issues, and hopefully one will work on your machine. Personally, I was able to get gdal and geoio to work on my local Mac, and then I scp'd over the important files that those libraries helped create onto my VM, which then ran the model.
+The libraries that are most likely to fail are gdal and geoio. If a requirement fails to install, first make sure you follow this install procedure exactly. Using `pip` to install GDAL did not work for me, and the only way I got it to install was by including it when I first make the conda environment (hence `pip gdal`). Also, there are several Stack Overflow posts on these issues, so hopefully one will work on your machine.
 
 If you want to run Jupyter Notebooks in an environment, run the following inside the environment:
 ```
