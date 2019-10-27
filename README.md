@@ -9,8 +9,8 @@ The purpose of the paper was to use abundant sources of data (namely satellite i
 Note: all scripts are put in Jupyter Notebook (.ipynb) files to encourage exploration and modification of the work.
 
 # Reproduction Results
-![Result plot](https://github.com/jmather625/predicting-poverty-replication/figures/plots.png)
-![Result stats](https://github.com/jmather625/predicting-poverty-replication/figures/stats.png)
+![Result plot](figures/plots.png)
+![Result stats](figures/stats.png)
 
 # Setup
 I recommend creating a virtual environment for this project. I prefer using Anaconda.
