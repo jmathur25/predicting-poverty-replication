@@ -10,8 +10,8 @@ Note: all scripts are put in Jupyter Notebook (.ipynb) files to encourage explor
 
 # Reproduction Results
 <p align="inline" style='text-align:center'>
-  <img src="figures/plots.png" width="325" alt="Result plots">
-  <img src="figures/stats.png" height="200" alt="Result stats">
+  <img src="figures/plots.png" width="350" alt="Result plots">
+  <img src="figures/stats.png" height="225" alt="Result stats">
 </p>
 
 # Setup
