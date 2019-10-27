@@ -1,9 +1,7 @@
 numpy
 pandas
-gdal
 requests
 sklearn
-scikit-image
 geoio
 pillow
 matplotlib
