@@ -61,8 +61,7 @@ https://github.com/protocolbuffers/protobuf/tree/master/python
 
 1. Download weights from https://www.dropbox.com/s/4cmfgay9gm2fyj6/predicting_poverty_trained.caffemodel?dl=0 into `setup_existing_model`
 2. Run `setup_existing_model/forward_pass.ipynb`
-3. Run `setup_existing_model/merge_nps.ipynb`
-4. Run `use_existing_model.ipynb`
+3. Run `use_existing_model.ipynb`
 
 
 # Use my model
