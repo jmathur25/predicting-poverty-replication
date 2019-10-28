@@ -11,7 +11,7 @@ Note: all scripts are put in Jupyter Notebook (.ipynb) files to encourage explor
 # Reproduction Results
 <p align="inline" style='text-align:center'>
   <img src="figures/plots.png" width="350" alt="Result plots">
-  <img src="figures/stats.png" height="225" alt="Result stats">
+  <img src="figures/stats.png" width="300" alt="Result stats" style="margin-left: 5%; margin-bottom: 4%">
 </p>
 
 # Setup
@@ -76,7 +76,7 @@ This recreates the original paper's training procedure by downloading the VGG mo
 2. Run `train_model.ipynb`
 3. Run `use_trained_model.ipynb`
 
-For reasons I'm not entirely clear on, training the model from scratch (just 5 epochs!) performs better than using the existing model. In fact, I completely matches the paper's results. I would think that using 2019 images to predict 2013 nightlights, and then using the features to predict 2016 cluster values would have more error than using 2019 images with a pretrained model to predict 2016 cluster values. If anyone has any explanation I'd love to hear. I do know the paper authors didn't use images in the same year either (they had the same timestamped image problem), so perhaps it's the same error for both of us, which might also explain the similar results.
+For reasons I'm not entirely clear on, training the model from scratch (just 5 epochs!) performs better than using the existing model. In fact, I completely matched the paper's results. I would think that using 2019 images to predict 2013 nightlights, and then using the features to predict 2016 cluster values would have more error than using 2019 images with a pretrained model to predict 2016 cluster values. If anyone has any explanation I'd love to hear. I do know the paper authors didn't use images in the same year either (they had the same timestamped image problem), so perhaps it's the same error for both of us, which might also explain the similar results.
 
 
 # High Level Procedure Overview
