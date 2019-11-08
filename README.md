@@ -6,8 +6,8 @@ The purpose of the paper was to use abundant sources of data (namely satellite i
 2) real-time monitoring of poverty conditions
 3) potential for early-warning systems
 
-Note 1: all scripts are put in Jupyter Notebook (.ipynb) files to encourage exploration and modification of the work.
-Note 2: I work with data from Malawi
+Note 1: all scripts are put in Jupyter Notebook (.ipynb) files to encourage exploration and modification of the work. <br>
+Note 2: I only work with data from Malawi
 
 # Reproduction Results
 <p align="inline" style='text-align:center'>
