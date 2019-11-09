@@ -10,7 +10,7 @@
 
 images/*
 process_data/data/ims_malawi_2016/
-process_data
+process_data/data/ims_ethiopia_2015/
 process_data/data/input/Nightlights
 process_data/data/api_key.txt
 process_data/data/input/LSMS/*
