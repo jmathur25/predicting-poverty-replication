@@ -6,15 +6,14 @@
 *.pth
 *.caffemodel
 *.DS_Store
-process_data/train
-process_data/valid
-process_data/ims
+
+images/*
 process_data/data/ims_malawi_2016/
-process_data/ims_malawi_2016
+process_data
 process_data/data/input/Nightlights
 process_data/data/api_key.txt
-process_data/data/input/LSMS/malawi-2016
-process_data/data/output/LSMS/malawi-2016
+process_data/data/input/LSMS/*
+process_data/data/output/LSMS/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
