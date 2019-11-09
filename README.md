@@ -41,7 +41,7 @@ There are several steps here, make sure to follow all of them.
 
 1. Download the nightlights data by running the Jupyter file in `process_data/scripts/download_nightlights_data.ipynb`
 2. Download the 2016-2017 Malawi survey data from https://microdata.worldbank.org/index.php/catalog. The World Bank wants to know how people use their data, so you will have to sign in and explain why you want their data. Query 'LSMS' and filter the years to help find the data. The title of the data when I downloaded it was `Fourth Integrated Household Survey 2016-2017`. If you look at the data description tab, you should see a huge list of files starting with `HH_Metadata`. Navigate to `Get Microdata` to download the data. Make sure to download the Stata version.
-3. Unzip the downloaded Malawi data into `process_data/data/input/LSMS`, and rename the folder to `malawi-2016`.
+3. Unzip the downloaded Malawi data into `process_data/data/input/LSMS`, and rename the folder to `malawi_2016`.
 4. Run the remaining scripts in `process_data/scripts` in the following order: <br>
     - `process_survey_data.ipynb` <br>
         This processes the survey data that you download in #2-3<br>
@@ -50,7 +50,7 @@ There are several steps here, make sure to follow all of them.
 5. Get a Google static maps API key at https://developers.google.com/maps/documentation/maps-static/intro. Save it to `process_data/data/api_key.txt`. Couple points here: <br>
     - Downloading aerial imagery with a timestamp isn't free. The static maps API lets you query lat/long but not time. So, the images are likely from 2019 (current year) but we can't be sure. By using 2016 survey data, we are effectively trying to use 2019 images to predict their 2016 values. As a result, we may not get optimal results, but at least we can do this at no monetary cost and quick setup time. <br>
     - I did try using this same approach but with 2013 Malawi data, and the results were far worse. I think this indicates that the images are the problem, because using 2019 images to predict 2016 values should be easier than trying to predict 2013 values.
-6. Navigate to `process_data/data` and run `downlod_mw_2016.ipynb`. It downloads satellite images of size 400x400 to `process_data/data/ims-malawi-2016`. This script takes several hours, as over 20k images are being downloaded. I hope to make all the images available on Dropbox or some hosting service to cut down the runtime, I just have to make sure I can do this with Google. <br>
+6. Navigate to `process_data/data` and run `downlod_mw_2016.ipynb`. It downloads satellite images of size 400x400 to `process_data/data/ims_malawi_2016`. This script takes several hours, as over 20k images are being downloaded. I hope to make all the images available on Dropbox or some hosting service to cut down the runtime, I just have to make sure I can do this with Google. <br>
     - `evaluate_download_progress.ipynb` can be used to see how many images have been downloaded. Note that if you are working on a VM like Google's Deep Learning VM, connections can close after extended periods of time. This doesn't stop the script itself from running, but there's no way to see the printed output anymore if you reopen the Jupyter file. This new file I made will simply read the number of images that are download. If the number keeps increasing, you know the script is still running. <br>
     - `im_download_demo.ipynb` demonstrates the API call in a standalone file.
 
