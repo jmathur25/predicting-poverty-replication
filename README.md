@@ -79,6 +79,12 @@ This recreates the original paper's training procedure by downloading the VGG mo
 For reasons I'm not entirely clear on, training the model from scratch (just 5 epochs!) performs better than using the existing model. In fact, I completely matched the paper's results. I would think that using 2019 images to predict 2013 nightlights, and then using the features to predict 2016 cluster values would have more error than using 2019 images with a pretrained model to predict 2016 cluster values. If anyone has any explanation I'd love to hear. I do know the paper authors didn't use images in the same year either (they had the same timestamped image problem), so perhaps it's the same error for both of us, which might also explain the similar results.
 
 
+# Gold Standard
+As a way to see how good the model is, I extract all features from the LSMS survey that an image could possibly recognize and use them to predict consumption. This serves as a "gold standard" for any image-based model. It turns out that the CNN model performs almost as well as this gold standard!
+
+1. Run `gold_standard/remote_features_survey_model.ipynb`
+
+
 # Activation Maps
 Activation maps are a good way to visually depict what a CNN focuses on.
 
