@@ -79,6 +79,33 @@ This recreates the original paper's training procedure by downloading the VGG mo
 For reasons I'm not entirely clear on, training the model from scratch (just 5 epochs!) performs better than using the existing model. In fact, I completely matched the paper's results. I would think that using 2019 images to predict 2013 nightlights, and then using the features to predict 2016 cluster values would have more error than using 2019 images with a pretrained model to predict 2016 cluster values. If anyone has any explanation I'd love to hear. I do know the paper authors didn't use images in the same year either (they had the same timestamped image problem), so perhaps it's the same error for both of us, which might also explain the similar results.
 
 
+# Activation Maps
+Activation maps are a good way to visually depict what a CNN focuses on.
+
+1. Run `activation_maps/visualize_cnn.ipynb`
+
+Big thanks to https://github.com/utkuozbulak/pytorch-cnn-visualizations for making CNN visualizations easier. I borrowed one technique, feel free to try more. Here are two examples:
+<p align='center'>
+  <img src="figures/activations1.png" width="300" alt="Result stats">
+  <img src="figures/img1.png" width="300" alt="Result plots" style='margin-left: 5%'>
+</p>
+
+<p align='center'>
+    <img src="figures/img2.png" width="300" alt="Result plots">
+    <img src="figures/activations2.png" width="300" alt="Result stats"  style='margin-left: 5%'>
+</p>
+
+Because the number of images far exceeds how many I can feasibly hand-check, it is difficult to make generalizations about what the model focuses on. That being said, roads tend to be a key area of focus, and bodies of water tend to be identified. Urban development/housing also seem to be important to the model, but activation maps outline them less clearly and distinctly than roads.
+
+However, the model does not seem to be especially robust. The image below was downloaded via my script and appears to be during nighttime, therefore hold little visual information. Nevertheless, the activation maps are still bright with meaningless information.
+
+
+<p align='center'>
+    <img src="figures/img3.png" width="300" alt="Result plots">
+    <img src="figures/activations3.png" width="300" alt="Result stats"  style='margin-left: 5%'>
+</p>
+
+
 # High Level Procedure Overview
 This section is meant to explain at a high level the procedure that the paper follows.
 
