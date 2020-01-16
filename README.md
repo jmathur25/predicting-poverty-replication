@@ -56,7 +56,7 @@ scripts/predict_consumption.ipynb
 ```
 
 In the code itself you should see some comments and lines explaining ever step. Couple points:
-- the image download step will take the longest amount of time (about 5,000 images per hour)
+- the image download step will take the longest amount of time (about 7,000 images per hour)
 - if you are working on a VM like Google's Deep Learning VM, connections can close after extended periods of time. This doesn't stop the script itself from running, but there's no way to see the progress bar in the notebook.
 - training the CNN on CPU is something you should try to avoid. Training the CNN took under 30 minutes on a single GPU, and a forward pass to extract features took under 10 minutes. On CPU, those runtimes are at least an order of magnitude higher.
 
