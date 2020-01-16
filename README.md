@@ -10,9 +10,9 @@ Note 1: all scripts are put in Jupyter Notebook (.ipynb) files to encourage expl
 Note 2: I only work with data from Malawi
 
 # Reproduction Results
-<p align="inline" style='text-align:center'>
+<p align="center">
   <img src="figures/plots.png" width="350" alt="Result plots">
-  <img src="figures/stats.png" width="300" alt="Result stats" style="margin-left: 5%; margin-bottom: 4%">
+  <img src="figures/stats.png" width="350" alt="Result stats" style='margin-left: 5%'>
 </p>
 
 # Setup
