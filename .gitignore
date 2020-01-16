@@ -8,7 +8,8 @@
 *.caffemodel
 *.DS_Store
 
-images/*
+data/*
+countries/*
 process_data/data/ims_malawi_2016/
 process_data/data/ims_ethiopia_2015/
 process_data/data/input/Nightlights

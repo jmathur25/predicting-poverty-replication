@@ -1,4 +1,0 @@
-Each country should have an image folder in this directory. The folder itself should contain:
-       1. The raw images in a folder called ims
-       2. The train images in a folder called train
-       3. The validation images in a folder called valid

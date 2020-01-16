@@ -1,1 +1,0 @@
-from .caffemodel2pytorch import *
