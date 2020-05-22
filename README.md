@@ -7,13 +7,13 @@ The purpose of the paper was to use abundant sources of data (namely satellite i
 3) potential for early-warning systems
 
 Note 1: all scripts are put in Jupyter Notebook (.ipynb) files to encourage exploration and modification of the work. <br>
-Note 2: I only work with data from Malawi
+Note 2: I chose to work with Malawi, Ethiopia, and Nigeria as they had the most usable data in 2015-2016
 
 # Reproduction Results
 <p align="center">
-  <img src="figures/malawi_results.png" width="350" alt="Malawi plot">
-  <img src="figures/ethiopia_results.png" width="350" alt="Ethiopia plot">
-  <img src="figures/nigeria_results.png" width="350" alt="Nigeria plot">
+  <img src="figures/malawi_results.png" width="400" alt="Malawi plot">
+  <img src="figures/ethiopia_results.png" width="400" alt="Ethiopia plot">
+  <img src="figures/nigeria_results.png" width="400" alt="Nigeria plot">
 </p>
 
 # Setup
@@ -42,24 +42,25 @@ To allow tqdm (the progress bar library) to run in a Jupyter Notebook, also run:
 conda install -c conda-forge ipywidgets
 ```
 
-Additionally, you need to get the LSMS survey data from the world bank. Download the 2016-2017 Malawi survey data from https://microdata.worldbank.org/index.php/catalog. The World Bank wants to know how people use their data, so you will have to sign in and explain why you want their data. Query 'LSMS' and filter the years to help find the data. The title of the data when I downloaded it was `Fourth Integrated Household Survey 2016-2017`. If you look at the data description tab, you should see a huge list of files starting with `HH_Metadata`. Navigate to `Get Microdata` to download the data. Make sure to download the Stata version. Unzip the downloaded Malawi data into `countries/malawi_2016/LSMS/`.
-
-Lastly, you need to get an api key from Google's Static Maps API service. Save it to `api_key.txt` in the root directory.
+To get the data, you need to do two things:
+1) download nightlights data from https://www.ngdc.noaa.gov/eog/viirs/download_dnb_composites.html. Use the 2015 annual composite in the 75N/060W tile and the 00N/060W tile.
+2) get the LSMS survey data from the world bank. Download the 2016-2017 Malawi survey data, 2015-2016 Ethiopia data, and the 2015-2016 Nigeria data from https://microdata.worldbank.org/index.php/catalog/lsms. The World Bank wants to know how people use their data, so you will have to sign in and explain why you want their data. Make sure to download the CSV version. Unzip the downloaded data into `countries/<country name>/LSMS/`. Country name should be either `malawi_2016`, `ethiopia_2015`, or `nigeria_2015`.
+3) get an api key from either Planet or Google's Static Maps API service. Both of these should be free, but Planet may take some time to approve and require you to list a research project to be eligible for the free tier. Google's service should be free if you download under 25k images a day. Save the api keys to `planet_api_key.txt` or `google_api_key.txt` in the root directory. I used Planet's API because then I could download images from 2015 and 2016, whereas Google's service only offers recent images over the last year. The code will show how to get the images.
 
 # Scripts
 Run the Jupyter files in the following order:
 ```
-scripts/download_nightlights_data.ipynb
 scripts/process_survey_data.ipynb
 scripts/download_images.ipynb
 scripts/train_cnn.ipynb
+scripts/feature_extract.ipynb
 scripts/predict_consumption.ipynb
 ```
 
 In the code itself you should see some comments and lines explaining ever step. Couple points:
-- the image download step will take the longest amount of time (about 7,000 images per hour)
+- the image download step will take the longest amount of time (several thousand per hour)
 - if you are working on a VM like Google's Deep Learning VM, connections can close after extended periods of time. This doesn't stop the script itself from running, but there's no way to see the progress bar in the notebook.
-- training the CNN on CPU is something you should try to avoid. Training the CNN took under 30 minutes on a single GPU, and a forward pass to extract features took under 10 minutes. On CPU, those runtimes are at least an order of magnitude higher.
+- training the CNN on CPU is something you should try to avoid. Training the CNN took just a few hours on a single GPU, and a forward pass to extract features took just a few minutes. On CPU, those runtimes are at least an order of magnitude higher.
 
 Besides training the CNN from scratch, you can also do one of the following:
 
@@ -74,7 +75,7 @@ Download the model I trained from https://drive.google.com/drive/folders/1gZZ1No
 
 
 # Gold Standard
-As a way to see how good the model is, I extract all features from the LSMS survey that an image could possibly recognize and use them to predict consumption. This serves as a "gold standard" for any image-based model. It turns out that the CNN model performs almost as well as this gold standard!
+As a way to see how good the model is, I extract all features from the LSMS survey that an image could possibly recognize and use them to predict consumption. This serves as a "gold standard" for any image-based model.
 
 1. Run `gold_standard/remote_features_survey_model.ipynb`
 
@@ -116,6 +117,14 @@ This section is meant to explain at a high level the procedure that the paper fo
 5. Compute the 4096 size feature vector (right before it is condensed into classification) for each image. Average these across a cluster.
 6. Assemble a dataset of clusters where you try to predict consumption (rather log consumption) from the aggregate feature vector per cluster. Use Ridge Regression.
 
+# Key Differences from Jean et al
+I highlight most of these in the code with comments, but for the purposes of documentation I reiterate them here. <br>
+
+1. Jean et al. computes R^2 by squaring the Pearson R correlation coefficient. In general, R^2 (coefficient of determination) has multiple definitions but the one I have seen most often is not the squaring of the Pearson R correlation coefficient, but rather using the squared error ratio. My reported R^2 uses that definition instead of the one Jean et al. use. This actually leads to seemingly different results, because the squared error can allow negative R^2 whereas squaring Pearson R clearly cannot. In one instance, the R^2 was under -1 but squaring the Pearson R correlation coefficient yielded 0.17. If you would like to use another defintion, change `utils/ridge_training.py`.
+
+2. the LSMS survey for Malawi calls "rexpagg" and "rexpaggpc" both per capita consumptions, but as indicated by the name, "rexpaggpc" is actually per capita and "rexpagg" is per household. To compute the consumption per capita in a cluster, you need to sum (not average) the consumptions per household, then divide by the total number of people surveyed in the cluster. Jean et al. does this differently by averaging the households instead of summing; also, they use an adult equivalent adjustment whereas I stick to capita.
+
+3. Jean et al. uses surveys three years prior from the ones I use, and my replication doesn't use all the same countries. Additionally, they don't use VIIRS data but rather a different nightlights annual composite (still from the NOAA) that was discontinued after 2013.
 
 # Contact
 You can reach me via email at jatinm2@illinois.edu
