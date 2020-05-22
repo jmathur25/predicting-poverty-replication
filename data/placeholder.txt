@@ -1,1 +1,0 @@
-Nightlights data and CNN training image data will go in here.

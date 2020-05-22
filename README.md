@@ -11,8 +11,9 @@ Note 2: I only work with data from Malawi
 
 # Reproduction Results
 <p align="center">
-  <img src="figures/plots.png" width="350" alt="Result plots">
-  <img src="figures/stats.png" width="350" alt="Result stats" style='margin-left: 5%'>
+  <img src="figures/malawi_results.png" width="350" alt="Malawi plot">
+  <img src="figures/ethiopia_results.png" width="350" alt="Ethiopia plot">
+  <img src="figures/nigeria_results.png" width="350" alt="Nigeria plot">
 </p>
 
 # Setup

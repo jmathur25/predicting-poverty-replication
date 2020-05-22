@@ -1,1 +1,0 @@
-Country data will go in here. Each country should have an LSMS folder. Scripts will generate "processed", "LSMS", and "results" folders in the country directory.
