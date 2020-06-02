@@ -35,7 +35,7 @@ pip install --user ipykernel
 python -m ipykernel install --user --name=<ENV_NAME>
 ```
 
-Then, set the kernel for all the Jupyter files to whatever your <ENV_NAME> is.
+Then, set the kernel for all the Jupyter files to whatever your ENV_NAME is.
 
 To allow tqdm (the progress bar library) to run in a Jupyter Notebook, also run:
 ```
@@ -43,7 +43,7 @@ conda install -c conda-forge ipywidgets
 ```
 
 To get the data, you need to do three things:
-1) download nightlights data from https://www.ngdc.noaa.gov/eog/viirs/download_dnb_composites.html. Use the 2015 annual composite in the 75N/060W tile and the 00N/060W tile. Save them to `viirs_2015_<tile_descriptor>.tif`, where tile_descriptor is 75N/060W or 00N/060W.
+1) download nightlights data from https://www.ngdc.noaa.gov/eog/viirs/download_dnb_composites.html. Use the 2015 annual composite in the 75N/060W tile and the 00N/060W tile. Choose the .tif file that has "vcm-orm-ntl" in the name. Save them to `viirs_2015_<tile_descriptor>.tif`, where tile_descriptor is 75N/060W or 00N/060W.
 2) get the LSMS survey data from the world bank. Download the 2016-2017 Malawi survey data, 2015-2016 Ethiopia data, and the 2015-2016 Nigeria data from https://microdata.worldbank.org/index.php/catalog/lsms. The World Bank wants to know how people use their data, so you will have to sign in and explain why you want their data. Make sure to download the CSV version. Unzip the downloaded data into `countries/<country name>/LSMS/`. Country name should be either `malawi_2016`, `ethiopia_2015`, or `nigeria_2015`.
 3) get an api key from either Planet or Google's Static Maps API service. Both of these should be free, but Planet may take some time to approve and require you to list a research project to be eligible for the free tier. Google's service should be free if you download under 25k images a day. Save the api keys to `planet_api_key.txt` or `google_api_key.txt` in the root directory. I used Planet's API because then I could download images from 2015 and 2016, whereas Google's service only offers recent images over the last year. The code will show how to get the images.
 
@@ -96,10 +96,9 @@ Big thanks to https://github.com/utkuozbulak/pytorch-cnn-visualizations for maki
     <img src="figures/activations2.png" width="300" alt="Result stats"  style='margin-left: 5%'>
 </p>
 
-Because the number of images far exceeds how many I can feasibly hand-check, it is difficult to make generalizations about what the model focuses on. That being said, roads tend to be a key area of focus, and bodies of water tend to be identified. Urban development/housing also seem to be important to the model, but activation maps outline them less clearly and distinctly than roads.
+Because the number of images far exceeds how many I can feasibly hand-check, it is difficult to make generalizations about what the model focuses on. That being said, roads tend to be a key area of focus, and the edges of bodies of water tend to be identified.
 
-However, the model does not seem to be especially robust. The image below was downloaded via my script and appears to be during nighttime, therefore hold little visual information. Nevertheless, the activation maps are still bright with meaningless information.
-
+The image below was downloaded via my script and appears to be faulty. The activations are dimmed, but still present near the border of the image.
 
 <p align='center'>
     <img src="figures/img3.png" width="300" alt="Result plots">
