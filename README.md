@@ -87,8 +87,8 @@ Activation maps are a good way to visually depict what a CNN focuses on.
 
 Big thanks to https://github.com/utkuozbulak/pytorch-cnn-visualizations for making CNN visualizations easier. I borrowed one technique, feel free to try more. Here are two examples:
 <p align='center'>
-  <img src="figures/activations1.png" width="300" alt="Result stats">
-  <img src="figures/img1.png" width="300" alt="Result plots" style='margin-left: 5%'>
+  <img src="figures/img1.png" width="300" alt="Result stats">
+  <img src="figures/activations1.png" width="300" alt="Result plots" style='margin-left: 5%'>
 </p>
 
 <p align='center'>
@@ -98,7 +98,7 @@ Big thanks to https://github.com/utkuozbulak/pytorch-cnn-visualizations for maki
 
 Because the number of images far exceeds how many I can feasibly hand-check, it is difficult to make generalizations about what the model focuses on. That being said, roads tend to be a key area of focus, and the edges of bodies of water tend to be identified.
 
-The image below was downloaded via my script and appears to be faulty. The activations are dimmed, but still present near the border of the image.
+However, edge cases seem to present weird outcomes. The image below was downloaded via my script and appears to be faulty. The activations are dimmed, but still present near the border of the image.
 
 <p align='center'>
     <img src="figures/img3.png" width="300" alt="Result plots">
