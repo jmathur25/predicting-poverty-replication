@@ -119,14 +119,11 @@ This section is meant to explain at a high level the procedure that the paper fo
 # Key Differences from Jean et al
 I highlight most of these in the code with comments, but for the purposes of documentation I reiterate them here. <br>
 
-1. Jean et al. computes R^2 by squaring the Pearson R correlation coefficient. In general, R^2 (coefficient of determination) has multiple definitions but the one I have seen most often is not the squaring of the Pearson R correlation coefficient, but rather using the squared error ratio. My reported R^2 uses that definition instead of the one Jean et al. use. This actually leads to seemingly different results, because the squared error can allow negative R^2 whereas squaring Pearson R clearly cannot. In one instance, the R^2 was under -1 but squaring the Pearson R correlation coefficient yielded 0.17. If you would like to use another defintion, change `utils/ridge_training.py`.
+1. Jean et al. computes R^2 by squaring the Pearson R correlation coefficient. In general, R^2 (coefficient of determination) has multiple definitions but the one I have seen most often is the Nash-Sutcliffe R^2. I use this instead of the one Jean et al. use. This actually leads to seemingly different results, because Nash-Sutcliffe can allow negative R^2 whereas squaring Pearson R clearly cannot. I still show the Pearson R^2 when you run `scripts/predict_consumption.ipynb`.
 
-2. the LSMS survey for Malawi calls "rexpagg" and "rexpaggpc" both per capita consumptions, but as indicated by the name, "rexpaggpc" is actually per capita and "rexpagg" is per household. To compute the consumption per capita in a cluster, you need to sum (not average) the consumptions per household, then divide by the total number of people surveyed in the cluster. Jean et al. does this differently by averaging the households instead of summing; also, they use an adult equivalent adjustment whereas I stick to capita.
+2. the LSMS survey for Malawi calls "rexpagg" and "rexpaggpc" both per capita consumptions, but as indicated by the name, "rexpaggpc" is actually per capita and "rexpagg" is per household. To compute the consumption per capita in a cluster, you need to sum (not average) the consumptions per household, then divide by the total number of people surveyed in the cluster. Jean et al. does this differently by averaging the households instead of summing; also, they use an adult equivalent adjustment whereas I do per capita.
 
-3. Jean et al. uses surveys three years prior from the ones I use, and my replication doesn't use all the same countries. Additionally, they don't use VIIRS data but rather a different nightlights annual composite (still from the NOAA) that was discontinued after 2013.
+3. Jean et al. uses data from 2013, three years prior to the year I use. Also, my replication doesn't use all the same countries. Lastly, they don't use VIIRS data but rather a different nightlights annual composite (still from the NOAA) that was discontinued after 2013.
 
 # Contact
 You can reach me via email at jatinm2@illinois.edu
-
-
-
