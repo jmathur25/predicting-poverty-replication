@@ -27,7 +27,34 @@ conda activate <ENV_NAME>
 conda install pytorch==1.3.0 torchvision==0.4.1 -c pytorch
 pip install -r requirements.txt
 ```
-The libraries that are most likely to fail are gdal and geoio. If a requirement fails to install, first make sure you follow this install procedure exactly. Using `pip` to install GDAL did not work for me, and the only way I got it to install was by including it when I first make the conda environment (hence `pip gdal`). There are also several Stack Overflow posts on these issues, so hopefully one will work on your machine. Regarding machines, I'd highly recommend getting a deep learning VM or some other CUDA-enabled runtime environment. The operating system should preferably be Linux. If not, you may run into some issues executing the `ln` to create symlinks.
+The libraries that are most likely to fail are gdal and geoio. If a requirement fails to install, first make sure you follow this install procedure exactly. Using `pip` to install GDAL did not work for me, and the only way I got it to install was by including it when I first make the conda environment (hence `pip gdal`).
+
+Alternate to install GDAL:
+```
+sudo add-apt-repository ppa:ubuntugis/ppa
+sudo apt-get update
+sudo apt-get install gdal-bin
+ogrinfo --version
+```
+Output must be: 'GDAL 3.0.4, released 2020/01/28'
+Next export 2 variables:
+```
+export CPLUS_INCLUDE_PATH=/usr/include/gdal     
+export C_INCLUDE_PATH=/usr/include/gdal
+```
+
+There are also several Stack Overflow posts on these issues, so hopefully one will work on your machine. Regarding machines, I'd highly recommend getting a deep learning VM or some other CUDA-enabled runtime environment. The operating system should preferably be Linux. If not, you may run into some issues executing the `ln` to create symlinks.
+If the symlinks still don't work then I would recommend to simply remove the broken symlinks.
+Follow this to remove the broken symlinks:
+First go to the path containing the broken symlinks and execute the following command to find the broken symlink:
+```
+find . -xtype l
+```
+then execute the following command to remove them:
+```
+find . -xtype l 2>/dev/null -exec rm {} \;
+```
+
 
 If you want to run Jupyter Notebooks in an environment, run the following inside the environment:
 ```
@@ -45,7 +72,7 @@ conda install -c conda-forge ipywidgets
 To get the data, you need to do three things:
 1) download nightlights data from https://www.ngdc.noaa.gov/eog/viirs/download_dnb_composites.html. Use the 2015 annual composite in the 75N/060W tile and the 00N/060W tile. Choose the .tif file that has "vcm-orm-ntl" in the name. Save them to `viirs_2015_<tile_descriptor>.tif`, where tile_descriptor is 75N/060W or 00N/060W.
 2) get the LSMS survey data from the world bank. Download the 2016-2017 Malawi survey data, 2015-2016 Ethiopia data, and the 2015-2016 Nigeria data from https://microdata.worldbank.org/index.php/catalog/lsms. The World Bank wants to know how people use their data, so you will have to sign in and explain why you want their data. Make sure to download the CSV version. Unzip the downloaded data into `countries/<country name>/LSMS/`. Country name should be either `malawi_2016`, `ethiopia_2015`, or `nigeria_2015`.
-3) get an api key from either Planet or Google's Static Maps API service. Both of these should be free, but Planet may take some time to approve and require you to list a research project to be eligible for the free tier. Google's service should be free if you download under 100k per month. Save the api keys to `planet_api_key.txt` or `google_api_key.txt` in the root directory. I used Planet's API because then I could download images from 2015 and 2016, whereas Google's service only offers recent images over the last year. The code will show how to get the images from the API.
+3) get an api key from either Planet or Google's Static Maps API service. Both of these should be free, but Planet may take some time to approve and require you to list a research project to be eligible for the free tier. Google's service should be free if you download under 100k per month. To eneble access to google API the verification process has to be completed by providing your card details(no charges will be applied!). As of 18th October 2020 Google is not accepting Indian debit cards. Also Google images have higher resolution and will occupy more space. Now save the api keys to `planet_api_key.txt` or `google_api_key.txt` in the root directory. I used Planet's API because then I could download images from 2015 and 2016, whereas Google's service only offers recent images over the last year. The code will show how to get the images from the API.
 
 # Scripts
 Run the Jupyter files in the following order:
@@ -60,7 +87,7 @@ scripts/predict_consumption.ipynb
 In the code itself you should see some comments and lines explaining ever step. Couple points:
 - the image download step will take the longest amount of time (several thousand per hour).
 - if you are working on a VM like Google's Deep Learning VM, connections can close after extended periods of time. This doesn't stop the script itself from running, but there's no way to see the progress bar in the notebook.
-- training the CNN on CPU is something you should try to avoid. Training the CNN took just a few hours on a single GPU, and a forward pass to extract features took just a few minutes. On CPU, those runtimes are at least an order of magnitude higher.
+- training the CNN on CPU is something you should try to avoid. Training the CNN took just a few hours on a single GPU, and a forward pass to extract features took just a few minutes. On CPU, those runtimes are at least an order of magnitude higher(greater than 24hours).
 
 Besides training the CNN from scratch, you can also do one of the following:
 
