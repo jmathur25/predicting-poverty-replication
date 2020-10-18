@@ -25,7 +25,6 @@ git clone https://github.com/jmather625/predicting-poverty-replication
 conda create -n <ENV_NAME> python=3.7 pip gdal
 conda activate <ENV_NAME>
 conda install pytorch==1.3.0 torchvision==0.4.1 -c pytorch
-pip install -r requirements.txt
 ```
 The libraries that are most likely to fail are gdal and geoio. If a requirement fails to install, first make sure you follow this install procedure exactly. Using `pip` to install GDAL did not work for me, and the only way I got it to install was by including it when I first make the conda environment (hence `pip gdal`).
 
