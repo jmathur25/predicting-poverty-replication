@@ -36,15 +36,16 @@ sudo apt-get update
 sudo apt-get install gdal-bin
 ogrinfo --version
 ```
-Output must be: 'GDAL 3.0.4, released 2020/01/28'
+Output must be: 'GDAL 3.0.4, released 2020/01/28'.
+
 Next export 2 variables:
 ```
 export CPLUS_INCLUDE_PATH=/usr/include/gdal     
 export C_INCLUDE_PATH=/usr/include/gdal
 ```
 
-There are also several Stack Overflow posts on these issues, so hopefully one will work on your machine. Regarding machines, I'd highly recommend getting a deep learning VM or some other CUDA-enabled runtime environment. The operating system should preferably be Linux. If not, you may run into some issues executing the `ln` to create symlinks.
-If the symlinks still don't work then I would recommend to simply remove the broken symlinks.
+There are also several Stack Overflow posts on these issues, so hopefully one will work on your machine. Regarding machines, I'd highly recommend getting a deep learning VM or some other CUDA-enabled runtime environment. The operating system should preferably be Linux. If not, you may run into some issues executing the `ln` to create symlinks.If the symlinks still don't work then I would recommend to simply remove the broken symlinks.
+
 Follow this to remove the broken symlinks:
 First go to the path containing the broken symlinks and execute the following command to find the broken symlink:
 ```
